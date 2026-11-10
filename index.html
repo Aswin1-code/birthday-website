@@ -945,7 +945,7 @@ function updateScene(dt, time) {
   const positions = dust.geometry.attributes.position.array;
   for (let i = 0; i < dustCount; i++) {
     const k = i * 3;
-    positions[k+1] += dustSpeeds[i] * dt * (gamePhase === PH.FINAL ? .45 : 1);
+    positions[k+1] += dustSpeeds[i] * dt * (gamePhase === PHASE.FINAL ? .45 : 1);
     positions[k] += Math.sin(time * .5 + i) * dt * .08;
     if (positions[k+1] > 7) positions[k+1] = -5;
   }
@@ -967,7 +967,7 @@ function updateScene(dt, time) {
   }
   cakeGlow.intensity = Math.max(cakeGlow.intensity, candleIntensity * (1 + Math.sin(time * 12) * .07));
   cakeGlow.position.x = Math.sin(time * 1.4) * .08;
-  ambientGold.intensity = gamePhase === PH.CAKE ? .8 : ambientGold.intensity * .995;
+  ambientGold.intensity = gamePhase === PHASE.CAKE ? .8 : ambientGold.intensity * .995;
 
   if (!reducedMotion) {
     camera.position.x += Math.sin(time * .22) * .0015;
